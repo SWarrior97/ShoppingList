@@ -4,3 +4,6 @@
 package-lock.json
 .serverless
 .DS_Store
+node_modules/
+config/config.env
+
