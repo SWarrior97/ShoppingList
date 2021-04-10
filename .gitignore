@@ -1,2 +1,37 @@
+.scannerwork/
 
+#server
+shoppingListAPI/node_modules
+
+shoppingListAPI/.env
+shoppingListAPI/package-lock.json
+shoppingListAPI/.serverless
+shoppingListAPI/.DS_Store
+shoppingListAPI/node_modules/
+
+#client
+shoppinglist/.DS_Store
+shoppinglist/node_modules
+shoppinglist//dist
 shoppinglist/package-lock.json
+
+
+# local env files
+shoppinglist/.env.local
+shoppinglist/.env.*.local
+
+# Log files
+shoppinglist/npm-debug.log*
+shoppinglist/yarn-debug.log*
+shoppinglist/yarn-error.log*
+shoppinglist/pnpm-debug.log*
+
+# Editor directories and files
+shoppinglist/.idea
+shoppinglist/.vscode
+shoppinglist/*.suo
+shoppinglist/*.ntvs*
+shoppinglist/*.njsproj
+shoppinglist/*.sln
+shoppinglist/*.sw?
+
