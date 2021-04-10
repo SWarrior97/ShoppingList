@@ -16,11 +16,6 @@ export default {
     
   }),
   created() {
-      const token = this.$store.state.userToken
-      
-      if(!token){
-          this.$router.push({name:'Login'});
-      }
   },
 };
 </script>

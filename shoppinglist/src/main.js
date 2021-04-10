@@ -9,6 +9,7 @@ Vue.config.productionTip = false;
 import "@/assets/css/common.css"
 import "@/assets/css/util.css"
 import "@/assets/css/basscss.css"
+import "@/assets/css/colors.css"
 
 new Vue({
   router,

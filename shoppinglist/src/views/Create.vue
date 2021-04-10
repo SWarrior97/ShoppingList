@@ -11,8 +11,18 @@
 					Account Login
 				</span>
 				<form class="login100-form validate-form p-b-33 p-t-5">
-                    
+
 					<div class="mt3 mx3">
+                        <v-text-field
+                            v-model="email"
+                            placeholder="example@email.com"
+                            hint="email"
+                            outlined
+                            prepend-icon="mdi-email"
+                        ></v-text-field>
+                    </div>
+
+					<div class="m-t-10 mx3">
                         <v-text-field
                             v-model="username"
                             placeholder="Grocery delivery"
@@ -36,12 +46,12 @@
 					<div class="container-login100-form-btn m-t-32">
 						<ul>
                             <li>
-                                <button class="login100-form-btn" @click.prevent="login">
-                                    Login
+                                <button class="login100-form-btn" @click.prevent="create">
+                                    Create Account
                                 </button>
                             </li>
                             <li class="center mt1">
-                                <a @click="goTo({name:'Create'})">Create Account</a>
+                                <a @click="goTo({name:'Login'})">login</a>
                             </li>
                         </ul>
 					</div>
@@ -53,7 +63,6 @@
 </template>
 
 <script>
-import fetch from 'node-fetch';
 
 export default {
   name: "App",
@@ -62,10 +71,11 @@ export default {
   },
 
   data: () => ({
-    username:null,
-    password:null,
     loader:false,
-    errors:[]
+    errors:[],
+    email:null,
+    username:null,
+    password:null
   }),
 
   computed:{
@@ -79,12 +89,13 @@ export default {
       goTo (routeName) {
         this.$router.push({name:routeName.name});
       },
-      async login(){
+      async create() {
             this.loader = true
-            const url = process.env.VUE_APP_API_URL + '/login'
+            const url = process.env.VUE_APP_API_URL + '/register'
             const body = {
                 username: this.username,
-                password: this.password
+                password: this.password,
+                email: this.email
             } 
             
             const response = await fetch(url, 
@@ -96,13 +107,14 @@ export default {
 
             if (response.ok){
                 const json = await response.json()
-                console.log('JSON',json)
+
                 if(!json.sucess){
                     this.errors.push(json.message)
                     setTimeout(() => this.errors = [], 5000);
                     return
                 }
-                
+
+
             }
       }
   },
