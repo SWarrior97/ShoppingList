@@ -12,8 +12,6 @@
     },
     data: () => ({
     }),
-     created() {
-    },
     computed:{
     }
   }

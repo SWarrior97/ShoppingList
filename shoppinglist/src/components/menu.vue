@@ -47,8 +47,6 @@
       drawer: null,
       links: require('../configs/menu.json')
     }),
-     created() {
-    },
     computed:{
         authUser (){
             return this.$store.state.authUser

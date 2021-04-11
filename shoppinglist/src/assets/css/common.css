@@ -6,12 +6,10 @@
 
 body, html {
 	height: 100%;
-	font-family: Ubuntu-Regular, sans-serif;
 }
 
 /*---------------------------------------------*/
 a {
-	font-family: Ubuntu-Regular;
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
@@ -37,7 +35,6 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 p {
-	font-family: Ubuntu-Regular;
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
@@ -109,7 +106,6 @@ iframe {
 /*//////////////////////////////////////////////////////////////////
 [ Utility ]*/
 .txt1 {
-  font-family: Poppins-Regular;
   font-size: 13px;
   color: #e5e5e5;
   line-height: 1.5;
@@ -193,7 +189,6 @@ iframe {
 }
 
 .login100-form-title {
-  font-family: Ubuntu-Bold;
   font-size: 28px;
   color: #fff;
   line-height: 1.2;
@@ -215,7 +210,6 @@ iframe {
 }
 
 .input100 {
-  font-family: Ubuntu-Regular;
   font-size: 20px;
   color: #555555;
   line-height: 1.2;
@@ -260,11 +254,9 @@ iframe {
   background: -webkit-linear-gradient(left, #a445b2, #d41872, #fa4299);
   background: -o-linear-gradient(left, #a445b2, #d41872, #fa4299);
   background: -moz-linear-gradient(left, #a445b2, #d41872, #fa4299);
-  background: linear-gradient(left, #a445b2, #d41872, #fa4299);
 }
 
 .focus-input100::after {
-  font-family: Linearicons-Free;
   font-size: 18px;
   color: #999999;
 
@@ -323,7 +315,6 @@ iframe {
 }
 
 .login100-form-btn {
-  font-family: Ubuntu-Bold;
   font-size: 18px;
   color: #fff;
   line-height: 1.2;
@@ -345,7 +336,6 @@ iframe {
   background: -webkit-linear-gradient(left, #a445b2, #d41872, #fa4299);
   background: -o-linear-gradient(left, #a445b2, #d41872, #fa4299);
   background: -moz-linear-gradient(left, #a445b2, #d41872, #fa4299);
-  background: linear-gradient(left, #a445b2, #d41872, #fa4299);
   position: relative;
   z-index: 1;
 
@@ -408,7 +398,6 @@ iframe {
   right: 10px;
   pointer-events: none;
 
-  font-family: Ubuntu-Bold;
   color: #c80000;
   font-size: 13px;
   line-height: 1.4;
@@ -425,7 +414,6 @@ iframe {
 
 .alert-validate::after {
   content: "\f12a";
-  font-family: FontAwesome;
   font-size: 16px;
   color: #c80000;
 

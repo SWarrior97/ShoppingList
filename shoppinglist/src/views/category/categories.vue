@@ -11,9 +11,7 @@
         Menu
     },
     data: () => ({
-    }),
-     created() {
-    },
+    })
     computed:{
     }
   }
