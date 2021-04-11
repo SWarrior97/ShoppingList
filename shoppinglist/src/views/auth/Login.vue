@@ -96,13 +96,15 @@ export default {
 
             if (response.ok){
                 const json = await response.json()
-                console.log('JSON',json)
+
                 if(!json.sucess){
                     this.errors.push(json.message)
                     setTimeout(() => this.errors = [], 5000);
                     return
                 }
-                
+                this.$store.commit("setToken", json.token);
+                this.$store.commit("setCurrentUser", json.user);
+                this.$router.push({name:'Home'})
             }
       }
   },

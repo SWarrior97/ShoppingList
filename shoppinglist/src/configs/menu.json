@@ -1,0 +1,38 @@
+[
+    {
+      "path": "/",
+      "name": "Home",
+      "title": "Home",
+      "icon": "mdi-home"
+    },
+    {
+      "path": "/products",
+      "name": "Product",
+      "title": "Products",
+      "icon": "mdi-food-variant"
+    },
+    {
+      "path": "/lists",
+      "name": "List",
+      "title": "Shopping List",
+      "icon": "mdi-clipboard-text"
+    },
+    {
+      "path": "/recipes",
+      "name": "Recipes",
+      "title": "Recipes",
+      "icon": "mdi-silverware-variant"
+    },
+    {
+      "path": "/categories",
+      "name": "Categories",
+      "title": "Categories",
+      "icon": "mdi-tag"
+    },
+    {
+      "path": null,
+      "name": null,
+      "title": "Logout",
+      "icon": " mdi-logout"
+    }
+]

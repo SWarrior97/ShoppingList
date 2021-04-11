@@ -53,7 +53,7 @@ router.get('/',async (req,res) =>{
         }
 
         if(!user){
-            response.message = `Email not Found`
+            response.message = `Username not Found`
 
             res.send(response)
             return 
@@ -69,9 +69,13 @@ router.get('/',async (req,res) =>{
         //jwt
         var token = jwt.sign({ id: user._id }, process.env.TOKEN_SECRET);
         response = {
-            sucess:true,
-            message:'Login successfully',
-            token:token
+            sucess: true,
+            message: 'Login successfully',
+            token: token,
+            user: {
+                username:user.username,
+                email:user.email
+            }
         }
         
         res.send(response)
