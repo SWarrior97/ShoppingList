@@ -32,7 +32,7 @@
           <v-list-item-icon>
             <v-icon>{{ link.icon }}</v-icon>
           </v-list-item-icon>
-
+          
           <v-list-item-content>
             <v-list-item-title>{{ link.title }}</v-list-item-title>
           </v-list-item-content>

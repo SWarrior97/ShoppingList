@@ -11,19 +11,18 @@ const ShoppingListSchema = new mongoose.Schema({
         required:true
     },
     totalPrice:{
-        type:String,
-        required:true
+        type:Float64Array,
+        default:0
       },
     owner:{
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },
-    products:{
+    products:[{
         type: Schema.Types.ObjectId,
         ref: 'Product',
-        required: true
-    }
+    }]
 })
 
 module.exports = mongoose.model('ShoppingList', ShoppingListSchema)

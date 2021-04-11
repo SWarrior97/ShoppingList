@@ -49,6 +49,7 @@ if(process.env.NODE_ENV === 'development'){
 //Routes
 app.use('/',require('./routes/index'))
 app.use('/user',require('./routes/user'))
+app.use('/shoppingList',require('./routes/list'))
 
 //swagger
 const swaggerDocs = swaggerJsDoc(swaggerOptions);

@@ -1,87 +1,112 @@
 <template>
   <v-app id="inspire">
-      <Menu />
+    <Menu />
     <v-main>
-      <v-container
-        class="py-8 px-6"
-        fluid
-      >
-        <v-row>
-          <v-col
-            v-for="card in cards"
-            :key="card"
-            cols="12"
-          >
-            <v-card>
-              <v-subheader>{{ card }}</v-subheader>
-
-              <v-list two-line>
-                <template v-for="n in 6">
-                  <v-list-item
-
-                    :key="n"
-                  >
-                    <v-list-item-avatar color="grey darken-1">
-                    </v-list-item-avatar>
-
-                    <v-list-item-content>
-                      <v-list-item-title>Message {{ n }}</v-list-item-title>
-
-                      <v-list-item-subtitle>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus distinctio similique
-                      </v-list-item-subtitle>
-                    </v-list-item-content>
-                  </v-list-item>
-
-                  <v-divider
-                    v-if="n !== 6"
-                    :key="`divider-${n}`"
-                    inset
-                  ></v-divider>
-                </template>
-              </v-list>
-            </v-card>
-          </v-col>
-        </v-row>
+      <v-container class="py-8 px-6" fluid>
+        <div class="footer">
+          <div class="flex justify-end mb3">
+            <v-icon class="btn-plus pointer" @click="addList()">
+              mdi-plus-circle
+            </v-icon>
+          </div>
+        </div>
       </v-container>
+      <Modal ref="modalPopup" />
     </v-main>
   </v-app>
 </template>
 
 <script>
-import Menu from '../components/menu'
-  export default {
-    components:{
-        Menu
+import Menu from "../components/menu";
+import Modal from "../components/modal";
+import { EventBus } from "../plugins/eventBus";
+import fetch from "node-fetch";
+
+export default {
+  components: {
+    Menu,
+    Modal
+  },
+  data: () => ({
+    drawer: null,
+    links: require("../configs/menu.json"),
+    name: null
+  }),
+  created() {
+    const token = this.$store.state.userToken;
+
+    if (!token) {
+      this.$router.push({ name: "Login" });
+    }
+  },
+  computed: {
+    authUser() {
+      return this.$store.state.authUser;
     },
-    data: () => ({
-      cards: ['Today', 'Yesterday'],
-      drawer: null,
-      links: require('../configs/menu.json')
-    }),
-     created() {
-         console.log('AQUI')
-      const token = this.$store.state.userToken
-      
-      if(!token){
-          this.$router.push({name:'Login'});
+    img() {
+      return `${require("@/assets/img/food.jpg")}`;
+    }
+  },
+  methods: {
+    goTo(path) {
+      if (this.$router.path === path) {
+        return;
       }
+      this.$router.push(path)
     },
-    computed:{
-        authUser (){
-            return this.$store.state.authUser
-        },
-        img(){
-            return `${require('@/assets/img/food.jpg')}`
+    addList() {
+      const event = "addShoppingList";
+      const formFields = [
+        {
+          name: "Name",
+          type: "text",
+          icon: "mdi-rename-box",
+          model: this.name,
+          field: "name"
         }
+      ];
+      const fields = {
+        title: "Add Shopping List",
+        btnText: "Add",
+        event: event
+      };
+      this.$refs["modalPopup"].open(formFields, fields);
     },
-    methods: {
-        goTo(path){
-            if(this.$router.path === path){
-                return
-            }
-            this.$router.push(path)
-        }
-    },
+    async addShoppingList(data){
+      const url = process.env.VUE_APP_API_URL + "/shoppingList";
+      const body = {
+        username: this.$store.state.authUser.username,
+        token: this.$store.state.userToken,
+        data: data
+      };
+      const response = await fetch(url, {
+        method: "Post",
+        body: JSON.stringify(body),
+        headers: { "Content-Type": "application/json" }
+      });
+
+      if (response.ok) {
+        //const json = await response.json()
+        /* if(!json.sucess){
+            
+        }*/
+      }
+    }
+  },
+  mounted() {
+    EventBus.$on("addShoppingList", this.addShoppingList);
   }
+};
 </script>
+
+<style>
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 80%;
+}
+
+.btn-plus {
+  font-size: 4em !important;
+}
+</style>

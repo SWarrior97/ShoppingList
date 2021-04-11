@@ -2,7 +2,6 @@ const Joi = require('joi');
 
 module.exports = {
     registerValidation: function (data) {
-        console.log('asd')
         const UserRegisterSchema  = Joi.object( {
             username:Joi.string().required(),
             email: Joi.string().email({ tlds: { allow: false } }).required(),
@@ -10,7 +9,6 @@ module.exports = {
         })
 
         return UserRegisterSchema.validate(data);
-        //console.log(error)
         
     },
     loginValidation:function(data) {
